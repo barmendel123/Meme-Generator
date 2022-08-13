@@ -98,7 +98,7 @@ function onSwitchLine() {
 }
 
 function onSaveMeme() {
-  // gSavedMemes.push(gCurrMeme)
+  gSavedMemes.push(gCurrMeme)
   renderSavedMemes()
   _saveMemsToStorage()
 }
