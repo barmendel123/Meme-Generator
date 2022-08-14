@@ -14,10 +14,9 @@
 
 
     <div class="main-screen" onclick="toggleMenu()"></div>
-    <input type="file" class="file-input btn hide-element" name="image" onchange="onImgInput(event)" />
-
+    
     <header class="main-header main-layout flex space-between align-center">
-        <div class="main-logo"></div>
+        <div class="logo"></div>
         <nav>
             <ul class="main-nav clean-list flex">
                 <li onclick="onGalleryShow()">Gallery</li>
@@ -27,8 +26,9 @@
         </nav>
         <button class="toggle-menu" onclick="toggleMenu()">☰</button>
     </header>
-
-
+    
+    
+    <input type="file" class="file-input btn hide-element" name="image" onchange="onImgInput(event)" />
     <main class="main-content main-layout">
         <section class="filters-container flex">
             <div class="search-keyword-container flex space-between">
@@ -109,7 +109,7 @@
     </main>
 
     <footer class="main-layout flex content-center">
-        <div class="main-logo"></div>
+        <div class="logo"></div>
     </footer>
 
     <script src="js/services/meme.service.js"></script>

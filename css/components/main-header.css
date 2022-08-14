@@ -11,7 +11,7 @@
 }
 
 
-.main-logo {
+.logo {
     background: url("/img/logo/LOGO.png");
     background-position: center center;
     background-size: cover;
@@ -25,10 +25,6 @@
     color: var(--clr6);
     border-radius: 1.25rem;
 }
-
-
-
-
 
 /* MAIN-SCREEN */
 .main-screen {
