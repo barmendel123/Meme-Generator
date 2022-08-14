@@ -40,28 +40,24 @@ function randomMeme() {
 
   sentenceArr.push(createLine({
     txt: getRandomStr(),
-    size: getRandomIntInclusive(15, 25),
+    size: getRandomIntInclusive(20, 28),
     align: 'center',
     color: getRandomColor(),
-    font: getRandomFont(),
+    font: 'Impact',
     pos: { x: gCanvasTop.x, y: gCanvasTop.y }
   }))
 
   if (getRandomIntInclusive(0, 1)) { // 50% will be second line
     sentenceArr.push(createLine({
       txt: getRandomStr(),
-      size: getRandomIntInclusive(15, 25),
+      size: getRandomIntInclusive(25, 28),
       align: 'center',
       color: getRandomColor(),
-      font: getRandomFont(),
+      font: 'Impact',
       pos: { x: gCanvasDown.x, y: gCanvasDown.y }
     }))
   }
-
-
   gMeme = createMeme({ selectedImgId: selectedImgId, selectedLineIdx: 0, lines: sentenceArr })
-  // console.log(gMeme);
-  console.log(gMeme);
 }
 
 function createMeme({ selectedImgId, lines = [createLine({})] }) {
@@ -102,7 +98,7 @@ function MoveText(alignTxt) {
 }
 
 function deleteLine() {
-  if (gMeme.lines.lengt === 0) return
+  if (gMeme.lines.length === 0) return
   gMeme.lines.splice(gMeme.selectedLineIdx, 1)
   if (gMeme.selectedLineIdx != 0) gMeme.selectedLineIdx--
 }
@@ -124,13 +120,13 @@ function addLine() {
   gMeme.lines.push(createLine({ pos: { x: posX, y: posY } }))
 }
 
-function createLine({ txt = 'Enter text...', size = 25, align = 'center', color = 'blue', strokeColor = 'red', font = 'Arial', pos = { x: 200, y: 50 } }) {
+function createLine({ txt =  'Enter text...', size = 28, align = 'center', color = 'blue', strokeStyle = 'black', font = 'Impact' , pos = { x: 200, y: 50 } }) {
   return {
     txt,
     size,
     align,
     color,
-    strokeColor,
+    strokeStyle,
     font,
     pos,
   }
@@ -146,29 +142,6 @@ function updatePlaceHolder() {
     document.querySelector('.meme-text-input').value = `Press '+' to add line :)`
   }
   else document.querySelector('.meme-text-input').value = gMeme.lines[gMeme.selectedLineIdx].txt
-}
-
-function getRandomStr() {
-  var index = getRandomIntInclusive(0, 14)
-  var stringsList = [
-    'Are you kidding me?',
-    `Let's talk tomorrow`,
-    'What the hell?!',
-    'Im out',
-    'Yes, please',
-    'I did it!',
-    'please tell me more',
-    'what did you do?!',
-    'Im not sure about that',
-    'That is awesome',
-    'All this yours, enjoy',
-    'HAHAHA',
-    'Im tireddd',
-    'Get over it now',
-    'I wonnn',
-  ]
-
-  return stringsList[index]
 }
 
 function _saveMemsToStorage() {

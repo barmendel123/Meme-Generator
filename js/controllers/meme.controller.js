@@ -1,21 +1,12 @@
 'use strict'
 
-var gElCanvas
-var gCtx
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
-var gPos
-var gCanvasTop, gCanvasDown, gCanvasMiddle
-var gFirstLine
-var gSavedMemes = []
-var gCurrMeme
-var gImgsAfterFilter
 
 
 function renderMeme() {
   gCurrMeme = getgMeme()
+
   const img = new Image()
   img.src = `img/meme-imgs/${gCurrMeme.selectedImgId + 1}.jpg`
-
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
@@ -28,11 +19,13 @@ function renderMeme() {
 
 function renderLine(line) {
   gCtx.beginPath()
-  gCtx.font = `${line.size}px ${line.font} `
-  gCtx.fillStyle = line.color
   gCtx.textAlign = line.align
   gCtx.lineWidth = 1
-  gCtx.fillText(line.txt, 200, line.pos.y)
+  gCtx.font = `${line.size}px ${line.font}` 
+  gCtx.fillStyle = line.color
+  gCtx.fillText(line.txt, line.pos.x, line.pos.y)
+  gCtx.strokeStyle = line.strokeStyle
+  gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
   gCtx.closePath()
 }
 
@@ -50,51 +43,60 @@ function onRandomMeme() {
 
 function onSetLineText(elUserText) {
   updateMemeUserText(elUserText.value)
-  renderMeme()
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onChangeColor(elUserColor) {
   updateMemeLineColor(elUserColor.value)
-  renderMeme()
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onChangeFontSize(elUserFontSize) {
   updateMemeFontSize(elUserFontSize)
-  renderMeme()
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onMoveText(elUserSideDecition) {
   MoveText(elUserSideDecition)
-  renderMeme()
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onDeleteLine() {
   deleteLine()
   updatePlaceHolder()
-  renderMeme()
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onChangeFontFamily(font) {
   ChangeFontFamily(font.value)
-  renderMeme()
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onMoveTextX(upOrDown) {
   updateLinePos(0, upOrDown,)
-  renderMeme()
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onAddLine() {
   addLine()
   switchLine()
   updatePlaceHolder()
-  renderMeme()
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onSwitchLine() {
   switchLine()
   updatePlaceHolder()
-  renderMeme
+  if(gCurrMeme['url'].myMeme) renderMyMeme()
+  else renderMeme()
 }
 
 function onSaveMeme() {
