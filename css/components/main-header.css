@@ -12,7 +12,7 @@
 
 
 .logo {
-    background: url("/img/logo/LOGO.png");
+    background: url("../../img/logo/LOGO.png");
     background-position: center center;
     background-size: cover;
     width: 14rem;
